@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RayHospital.Resources\RayHospital.Resources.csproj" />
     <ProjectReference Include="..\RayHospital.Interfaces\RayHospital.Interfaces.csproj" />
+    <ProjectReference Include="..\RayHospital.Domain\RayHospital.Domain.csproj" />
   </ItemGroup>
 
 </Project>

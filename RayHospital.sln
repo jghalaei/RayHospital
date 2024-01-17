@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayHospital.App", "RayHospi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayHospital.Interfaces", "RayHospital.Interfaces\RayHospital.Interfaces.csproj", "{DEF9E7CD-A4B1-469F-B478-8C4E58022B18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayHospital.Domain", "RayHospital.Domain\RayHospital.Domain.csproj", "{FF94B28E-7113-421A-A6EE-6C083F8972C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DEF9E7CD-A4B1-469F-B478-8C4E58022B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEF9E7CD-A4B1-469F-B478-8C4E58022B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEF9E7CD-A4B1-469F-B478-8C4E58022B18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF94B28E-7113-421A-A6EE-6C083F8972C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF94B28E-7113-421A-A6EE-6C083F8972C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF94B28E-7113-421A-A6EE-6C083F8972C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF94B28E-7113-421A-A6EE-6C083F8972C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
