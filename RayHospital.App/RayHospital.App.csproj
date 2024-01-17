@@ -9,6 +9,16 @@
     <ProjectReference Include="..\RayHospital.Resources\RayHospital.Resources.csproj" />
     <ProjectReference Include="..\RayHospital.Interfaces\RayHospital.Interfaces.csproj" />
     <ProjectReference Include="..\RayHospital.Domain\RayHospital.Domain.csproj" />
+    <ProjectReference Include="..\RayHospital.Infrastructure\RayHospital.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DoctorsServices\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

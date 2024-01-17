@@ -1,6 +1,15 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using RayHospital.App.Consultations;
+using RayHospital.App.Services;
+using RayHospital.Domain.Entities;
+using RayHospital.Domain.Entities.Consultation;
+using RayHospital.Infrastructure;
+using RayHospital.Infrastructure.Data;
+using RayHospital.Infrastructure.Repositories;
 using RayHospital.Interfaces;
 using RayHospital.Resources;
 
@@ -14,8 +23,19 @@ namespace RayHospital.App
 
     static void Main(string[] args)
     {
+      var host = Host.CreateDefaultBuilder(args)
+                  .ConfigureServices((context, services) =>
+                    {
+                      services.AddInfrastructureServices();
+                      services.AddScoped<TreatmentRoomServices>();
+                      services.AddScoped<DoctorServices>();
+                      services.AddScoped<IConsultationsManager, ConsultationsManager>();
+                    }
+                  ).Build();
+
+      DataSeeder.SeedData();
       // TODO: Create implementation of IConsultationsManager and initialize using HospitalResources.
-      IConsultationsManager consultationsManager = null;
+      IConsultationsManager consultationsManager = host.Services.GetService<IConsultationsManager>();
 
       // Read hard-coded list of patients and book a consultation for each patient
       DateTime startDate = DateTime.Today;
@@ -29,6 +49,9 @@ namespace RayHospital.App
       // Print the resulting consultations
       var consultations = consultationsManager.Consultations();
       Console.WriteLine(JsonConvert.SerializeObject(consultations, Formatting.Indented, new IsoDateTimeConverter { DateTimeFormat = "yyyy-MM-dd" }));
+
     }
+
+
   }
 }

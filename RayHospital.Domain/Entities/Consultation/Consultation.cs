@@ -7,17 +7,17 @@ namespace RayHospital.Domain.Entities.Consultation
 {
     public class Consultation
     {
-        public Consultation(DateTime registerationDate, Patient patient, Doctor doctor, TreatmentRoom room)
+        public Consultation(DateTime registerationDate, string patientName, string doctorName, string roomName, DateTime consultaionDate)
         {
-            RegisterationDate = registerationDate;
-            Patient = patient;
-            Doctor = doctor;
-            Room = room;
-
+            this.PatientName = patientName;
+            this.DoctorName = doctorName;
+            this.RegisterationDate = registerationDate;
+            RoomName = roomName;
+            ConsultaionDate = consultaionDate;
         }
-        public Patient Patient { get; set; }
-        public Doctor Doctor { get; set; }
-        public TreatmentRoom Room { get; set; }
+        public string PatientName { get; set; }
+        public string DoctorName { get; set; }
+        public string RoomName { get; set; }
         public DateTime RegisterationDate { get; set; }
         public DateTime ConsultaionDate { get; set; }
     }

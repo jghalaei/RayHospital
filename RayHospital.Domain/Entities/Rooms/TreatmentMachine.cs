@@ -2,11 +2,11 @@ namespace RayHospital.Domain.Entities
 {
     public class TreatmentMachine : HospitalEntity
     {
-        public TreatmentMachine(string name, EMachineCapacity capacity) : base(name)
+        public TreatmentMachine(string name, EMachineCapability capability) : base(name)
         {
-            Capacity = capacity;
+            Capability = capability;
         }
 
-        public EMachineCapacity Capacity { get; set; }
+        public EMachineCapability Capability { get; set; }
     }
 }
