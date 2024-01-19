@@ -7,17 +7,10 @@ namespace RayHospital.Infrastructure.Data
 {
     public class InMemoryData
     {
-        private static Dictionary<Type, List<object>> MemoryData = new Dictionary<Type, List<object>>();
-        private static InMemoryData? _instance;
-        private InMemoryData()
+        private Dictionary<Type, List<object>> MemoryData = new Dictionary<Type, List<object>>();
+        public InMemoryData()
         {
-
-        }
-
-        public static InMemoryData GetInstance()
-        {
-            if (_instance == null) _instance = new InMemoryData();
-            return _instance;
+            MemoryData = new();
         }
         public void Insert<T>(T data)
         {

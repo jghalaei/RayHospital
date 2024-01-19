@@ -3,8 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using RayHospital.App.Consultations;
-using RayHospital.App.Services;
+using RayHospital.App.Managers;
 using RayHospital.Domain.Entities;
 using RayHospital.Domain.Entities.Consultation;
 using RayHospital.Infrastructure;
@@ -23,18 +22,20 @@ namespace RayHospital.App
 
     static void Main(string[] args)
     {
+      //Using Dependency Injection to inject all repositories and services.
       var host = Host.CreateDefaultBuilder(args)
                   .ConfigureServices((context, services) =>
                     {
                       services.AddInfrastructureServices();
-                      services.AddScoped<TreatmentRoomServices>();
-                      services.AddScoped<DoctorServices>();
+                      services.AddScoped<IRoomsManager, RoomsManager>();
+                      services.AddScoped<IDoctorsManager, DoctorsManager>();
                       services.AddScoped<IConsultationsManager, ConsultationsManager>();
                     }
                   ).Build();
 
-      DataSeeder.SeedData();
-      // TODO: Create implementation of IConsultationsManager and initialize using HospitalResources.
+      var seeder = host.Services.GetRequiredService<DataSeeder>();
+      seeder.SeedData();
+
       IConsultationsManager consultationsManager = host.Services.GetService<IConsultationsManager>();
 
       // Read hard-coded list of patients and book a consultation for each patient

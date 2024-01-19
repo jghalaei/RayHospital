@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayHospital.Domain", "RayHo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayHospital.Infrastructure", "RayHospital.Infrastructure\RayHospital.Infrastructure.csproj", "{D0BBEDB1-25B4-4A9F-BCB9-772581940947}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RayHospital.Tests", "RayHospital.Tests", "{A4327903-31DC-4EE1-A217-AFB221CEF5C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayHosptial.App.Tests", "RayHospital.Tests\RayHosptial.App.Tests\RayHosptial.App.Tests.csproj", "{1951FA7D-F625-4CEC-9CB4-45457371C7BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,11 +43,18 @@ Global
 		{D0BBEDB1-25B4-4A9F-BCB9-772581940947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0BBEDB1-25B4-4A9F-BCB9-772581940947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0BBEDB1-25B4-4A9F-BCB9-772581940947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1951FA7D-F625-4CEC-9CB4-45457371C7BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1951FA7D-F625-4CEC-9CB4-45457371C7BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1951FA7D-F625-4CEC-9CB4-45457371C7BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1951FA7D-F625-4CEC-9CB4-45457371C7BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F647131E-CAA9-4D56-8F7E-D5FA540387EC}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1951FA7D-F625-4CEC-9CB4-45457371C7BF} = {A4327903-31DC-4EE1-A217-AFB221CEF5C5}
 	EndGlobalSection
 EndGlobal

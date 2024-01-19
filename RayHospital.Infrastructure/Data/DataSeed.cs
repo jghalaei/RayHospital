@@ -8,27 +8,48 @@ using RayHospital.Resources;
 
 namespace RayHospital.Infrastructure.Data
 {
-    public static class DataSeeder
+    public class DataSeeder
     {
-        public static void SeedData()
+        private readonly InMemoryData _inMemoryData;
+
+        public DataSeeder(InMemoryData inMemoryData)
+        {
+            _inMemoryData = inMemoryData;
+        }
+
+        public void SeedData()
+        {
+            SeedDoctors();
+            SeddMachines();
+            SeedRooms();
+        }
+
+        private void SeedRooms()
+        {
+            foreach (var item in HospitalResources.TreatmentRooms)
+            {
+                var machine = _inMemoryData.GetAll<TreatmentMachine>().FirstOrDefault(m => m.Name == item.MachineName);
+                TreatmentRoom room = new TreatmentRoom(item.Name, machine);
+                _inMemoryData.Insert(room);
+            }
+        }
+
+        private void SeddMachines()
+        {
+            foreach (var item in HospitalResources.TreatmentMachines)
+            {
+                TreatmentMachine machine = new TreatmentMachine(item.Name, Enum.Parse<EMachineCapability>(item.Capability));
+                _inMemoryData.Insert(machine);
+            }
+        }
+
+        private void SeedDoctors()
         {
             foreach (var item in HospitalResources.Doctors)
             {
                 Doctor doctor = new Doctor(item.Name, item.Roles);
-                InMemoryData.GetInstance().Insert(doctor);
-            }
-            foreach (var item in HospitalResources.TreatmentMachines)
-            {
-                TreatmentMachine machine = new TreatmentMachine(item.Name, Enum.Parse<EMachineCapability>(item.Capability));
-                InMemoryData.GetInstance().Insert(machine);
-            }
-            foreach (var item in HospitalResources.TreatmentRooms)
-            {
-                var machine = InMemoryData.GetInstance().GetAll<TreatmentMachine>().FirstOrDefault(m => m.Name == item.MachineName);
-                TreatmentRoom room = new TreatmentRoom(item.Name, machine);
-                InMemoryData.GetInstance().Insert(room);
+                _inMemoryData.Insert(doctor);
             }
         }
-
     }
 }

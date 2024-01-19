@@ -5,19 +5,28 @@ namespace RayHospital.Infrastructure.Repositories
 {
     public class Repository<T> : IRepository<T>
     {
-
+        private readonly InMemoryData _inMemoryData;
+        public Repository(InMemoryData inMemoryData = null)
+        {
+            _inMemoryData = inMemoryData;
+        }
         public void Insert(T entity)
         {
-            InMemoryData.GetInstance().Insert<T>(entity);
+            _inMemoryData.Insert<T>(entity);
         }
         public IEnumerable<T> GetAll()
         {
-            return InMemoryData.GetInstance().GetAll<T>();
+            return _inMemoryData.GetAll<T>();
         }
 
         public IEnumerable<T> GetAll(Func<T, bool> predicate)
         {
-            return InMemoryData.GetInstance().GetAll<T>().Where(predicate);
+            return _inMemoryData.GetAll<T>().Where(predicate);
+        }
+
+        public T GetOne(Func<T, bool> predicate)
+        {
+            return _inMemoryData.GetAll<T>().FirstOrDefault(predicate);
         }
     }
 }
