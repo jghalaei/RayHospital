@@ -12,6 +12,12 @@ namespace RayHospital.Infrastructure.Data
         {
             MemoryData = new();
         }
+        public void InsertMany<T>(List<T> data)
+        {
+            if (data == null || data.Count == 0)
+                return;
+            data.ForEach(d => Insert(d));
+        }
         public void Insert<T>(T data)
         {
             if (data == null)

@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Linq.Expressions;
 using RayHospital.Domain.Entities;
 using RayHospital.Domain.Entities.Consultation;
 using RayHospital.Interfaces;
@@ -16,7 +17,7 @@ public class RoomsManager : IRoomsManager
         _consultationRepository = consultationRepository;
     }
 
-    public TreatmentRoom GetAvailableRoom(DateTime date, EConditionType condition, ETopography? topography)
+    public TreatmentRoom GetAvailableRoom(DateTime date, EConditionType condition, ETopography? topography = null)
     {
         foreach (var room in _roomRepository.GetAll(x => IsRoomMatched(x, condition, topography)))
         {
@@ -28,7 +29,7 @@ public class RoomsManager : IRoomsManager
 
     private bool CheckRoomAvailability(DateTime date, TreatmentRoom room)
     {
-        var book = _consultationRepository.GetOne(c => c.ConsultaionDate == date && c.RoomName == room.Name);
+        var book = _consultationRepository.GetOne(c => c.ConsultaionDate.Date == date.Date && c.RoomName == room.Name);
         return book == null;
     }
 
@@ -37,6 +38,7 @@ public class RoomsManager : IRoomsManager
     {
         if (condition == EConditionType.Flu)
             return true;
+        ArgumentNullException.ThrowIfNull(topography, "Cancer topography is required");
         if (condition == EConditionType.Cancer && room.Machine is not null)
         {
             if (topography == ETopography.Breast)

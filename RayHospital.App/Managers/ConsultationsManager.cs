@@ -25,6 +25,7 @@ public class ConsultationsManager : IConsultationsManager
 
     public ConsultationModel BookConsultation(DateTime registrationDate, PatientRegistrationModel patient)
     {
+        registrationDate = registrationDate.Date;
         var book = FindFirstAvailableConsultationTime(registrationDate, patient);
         _consultationRepository.Insert(book);
         return book.ToConsultationModel();

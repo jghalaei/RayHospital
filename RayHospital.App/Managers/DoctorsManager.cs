@@ -29,7 +29,7 @@ public class DoctorsManager : IDoctorsManager
 
     private bool CheckDoctorAvailability(DateTime date, Doctor doctor)
     {
-        var book = _consultationRepository.GetOne(c => c.ConsultaionDate == date && c.DoctorName == doctor.Name);
+        var book = _consultationRepository.GetOne(c => c.ConsultaionDate.Date == date.Date && c.DoctorName == doctor.Name);
         return book == null;
     }
 
